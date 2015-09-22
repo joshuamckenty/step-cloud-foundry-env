@@ -43,7 +43,9 @@ main() {
   eval $login_cmd;
 
   ./cf set-env $appname $key ${!key}
-  ./cf set-env $alt_appname $key ${!key}
+  if [ -n "$alt_appname" ]; then
+    ./cf set-env $alt_appname $key ${!key}
+  fi
 }
 
 # Run the main function
